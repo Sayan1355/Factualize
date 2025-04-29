@@ -1,0 +1,24 @@
+name: serena-backend
+services:
+  web:
+    build:
+      context: C:\Users\SAYAN PAUL\OneDrive\Desktop\serena-backend
+      dockerfile: Dockerfile
+    command:
+      - uvicorn
+      - main:app
+      - --host
+      - 0.0.0.0
+      - --port
+      - "8000"
+    networks:
+      default: null
+    ports:
+      - mode: ingress
+        target: 8000
+        published: "8000"
+        protocol: tcp
+        app_protocol: http
+networks:
+  default:
+    name: serena-backend_default
